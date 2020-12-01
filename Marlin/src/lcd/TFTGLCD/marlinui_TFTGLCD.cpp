@@ -261,12 +261,21 @@ uint8_t MarlinUI::read_slow_buttons(void) {
     SPI_SEND_ONE(READ_ENCODER);
     #ifndef STM32F4xx
       WRITE(TFTGLCD_CS, LOW); // for delay
+<<<<<<< HEAD:Marlin/src/lcd/TFTGLCD/marlinui_TFTGLCD.cpp
     #endif
     encoderDiff += SPI_SEND_ONE(READ_BUTTONS);
     #ifndef STM32F4xx
       WRITE(TFTGLCD_CS, LOW); // for delay
       WRITE(TFTGLCD_CS, LOW);
     #endif
+=======
+    #endif
+    encoderDiff += SPI_SEND_ONE(READ_BUTTONS);
+    #ifndef STM32F4xx
+      WRITE(TFTGLCD_CS, LOW); // for delay
+      WRITE(TFTGLCD_CS, LOW);
+    #endif
+>>>>>>> 2.0.x:Marlin/src/lcd/TFTGLCD/ultralcd_TFTGLCD.cpp
     b = SPI_SEND_ONE(GET_SPI_DATA);
     WRITE(TFTGLCD_CS, HIGH);
     return b;

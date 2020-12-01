@@ -20,3 +20,11 @@
  *
  */
 #pragma once
+<<<<<<< HEAD
+=======
+
+#if ENABLED(USE_USB_COMPOSITE)
+  //#warning "SD_CHECK_AND_RETRY isn't needed with USE_USB_COMPOSITE."
+  #undef SD_CHECK_AND_RETRY
+#endif
+>>>>>>> 2.0.x

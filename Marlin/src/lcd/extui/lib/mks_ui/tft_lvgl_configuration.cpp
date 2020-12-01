@@ -77,7 +77,11 @@ lv_group_t*  g;
 uint16_t DeviceCode = 0x9488;
 extern uint8_t sel_id;
 
+<<<<<<< HEAD
 extern bool flash_preview_begin, default_preview_flg, gcode_preview_over;
+=======
+extern uint8_t gcode_preview_over, flash_preview_begin, default_preview_flg;
+>>>>>>> 2.0.x
 
 uint8_t bmp_public_buf[17 * 1024];
 
@@ -121,6 +125,7 @@ void tft_lvgl_init() {
   ui_cfg_init();
   disp_language_init();
 
+<<<<<<< HEAD
   watchdog_refresh();     // LVGL init takes time
 
   // Init TFT first!
@@ -128,13 +133,23 @@ void tft_lvgl_init() {
   SPI_TFT.LCD_init();
 
   watchdog_refresh();     // LVGL init takes time
+=======
+  //init tft first!
+  SPI_TFT.spi_init(SPI_FULL_SPEED);
+  SPI_TFT.LCD_init();
+>>>>>>> 2.0.x
 
   //spi_flash_read_test();
   #if ENABLED(SDSUPPORT)
+    watchdog_refresh();
     UpdateAssets();
     watchdog_refresh();   // LVGL init takes time
   #endif
 
+<<<<<<< HEAD
+=======
+  watchdog_refresh();
+>>>>>>> 2.0.x
   mks_test_get();
 
   touch.Init();
@@ -230,6 +245,7 @@ void tft_lvgl_init() {
 }
 
 void my_disp_flush(lv_disp_drv_t * disp, const lv_area_t * area, lv_color_t * color_p) {
+<<<<<<< HEAD
   uint16_t width = area->x2 - area->x1 + 1,
           height = area->y2 - area->y1 + 1;
 
@@ -238,6 +254,17 @@ void my_disp_flush(lv_disp_drv_t * disp, const lv_area_t * area, lv_color_t * co
   for (uint16_t i = 0; i < height; i++)
     SPI_TFT.tftio.WriteSequence((uint16_t*)(color_p + width * i), width);
 
+=======
+  uint16_t i, width, height;
+
+  width = area->x2 - area->x1 + 1;
+  height = area->y2 - area->y1 + 1;
+
+  SPI_TFT.setWindow((uint16_t)area->x1, (uint16_t)area->y1, width, height);
+  for (i = 0; i < height; i++) {
+    SPI_TFT.tftio.WriteSequence((uint16_t*)(color_p + width * i), width);
+  }
+>>>>>>> 2.0.x
   lv_disp_flush_ready(disp);       /* Indicate you are ready with the flushing*/
 
   W25QXX.init(SPI_QUARTER_SPEED);
@@ -254,6 +281,7 @@ static bool get_point(int16_t *x, int16_t *y) {
 
   if (!is_touched) return false;
 
+<<<<<<< HEAD
   #if ENABLED(TOUCH_SCREEN_CALIBRATION)
     const calibrationState state = touch_calibration.get_calibration_state();
     if (state >= CALIBRATION_TOP_LEFT && state <= CALIBRATION_BOTTOM_RIGHT) {
@@ -265,6 +293,11 @@ static bool get_point(int16_t *x, int16_t *y) {
   #else
     *x = int16_t((int32_t(*x) * TOUCH_CALIBRATION_X) >> 16) + TOUCH_OFFSET_X;
     *y = int16_t((int32_t(*y) * TOUCH_CALIBRATION_Y) >> 16) + TOUCH_OFFSET_Y;
+=======
+  #if (TFT_ROTATION & TFT_ROTATE_180)
+    *x = int16_t((TFT_WIDTH) - (int)(*x));
+    *y = int16_t((TFT_HEIGHT) - (int)(*y));
+>>>>>>> 2.0.x
   #endif
 
   return true;
@@ -487,7 +520,10 @@ void lv_encoder_pin_init() {
 
         #endif
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2.0.x
         static uint8_t buttons = 0;
         buttons = newbutton;
         static uint8_t lastEncoderBits;

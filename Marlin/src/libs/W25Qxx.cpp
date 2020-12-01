@@ -86,12 +86,20 @@ void W25QXXFlash::init(uint8_t spiRate) {
  * @return Byte received
  */
 uint8_t W25QXXFlash::spi_flash_Rec() {
+<<<<<<< HEAD
   const uint8_t returnByte = mySPI.transfer(0xFF);
+=======
+  const uint8_t returnByte = SPI.transfer(0xFF);
+>>>>>>> 2.0.x
   return returnByte;
 }
 
 uint8_t W25QXXFlash::spi_flash_read_write_byte(uint8_t data) {
+<<<<<<< HEAD
   const uint8_t returnByte = mySPI.transfer(data);
+=======
+  const uint8_t returnByte = SPI.transfer(data);
+>>>>>>> 2.0.x
   return returnByte;
 }
 

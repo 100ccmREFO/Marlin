@@ -71,6 +71,7 @@
 //   #define TFT_COLOR   TFT_COLOR_RGB
 // #endif
 
+<<<<<<< HEAD
 #define TOUCH_ORIENTATION_NONE  0
 #define TOUCH_LANDSCAPE         1
 #define TOUCH_PORTRAIT          2
@@ -79,6 +80,8 @@
   #define TOUCH_ORIENTATION    TOUCH_LANDSCAPE
 #endif
 
+=======
+>>>>>>> 2.0.x
 #define SSD1963         0x5761
 #define ST7735          0x89F0
 #define ST7789          0x8552

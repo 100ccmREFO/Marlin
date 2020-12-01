@@ -171,6 +171,7 @@ void _menu_move_distance(const AxisEnum axis, const screenFunc_t func, const int
   }
 
   BACK_ITEM(MSG_MOVE_AXIS);
+<<<<<<< HEAD
   if (parser.using_inch_units()) {
     SUBMENU(MSG_MOVE_01IN,   []{ _goto_manual_move(IN_TO_MM(0.100f)); });
     SUBMENU(MSG_MOVE_001IN,  []{ _goto_manual_move(IN_TO_MM(0.010f)); });
@@ -198,6 +199,28 @@ void _menu_move_distance(const AxisEnum axis, const screenFunc_t func, const int
         SUBMENU_P(tmp, []{ _goto_manual_move(float(SHORT_MANUAL_Z_MOVE)); });
       #endif
     }
+=======
+  SUBMENU(MSG_MOVE_10MM, []{ _goto_manual_move(10);    });
+  SUBMENU(MSG_MOVE_1MM,  []{ _goto_manual_move( 1);    });
+  SUBMENU(MSG_MOVE_01MM, []{ _goto_manual_move( 0.1f); });
+  if (axis == Z_AXIS && (SHORT_MANUAL_Z_MOVE) > 0.0f && (SHORT_MANUAL_Z_MOVE) < 0.1f) {
+    // Determine digits needed right of decimal
+    constexpr uint8_t digs = !UNEAR_ZERO((SHORT_MANUAL_Z_MOVE) * 1000 - int((SHORT_MANUAL_Z_MOVE) * 1000)) ? 4 :
+                              !UNEAR_ZERO((SHORT_MANUAL_Z_MOVE) *  100 - int((SHORT_MANUAL_Z_MOVE) *  100)) ? 3 : 2;
+    PGM_P const label = GET_TEXT(MSG_MOVE_Z_DIST);
+    char tmp[strlen_P(label) + 10 + 1], numstr[10];
+    sprintf_P(tmp, label, dtostrf(SHORT_MANUAL_Z_MOVE, 1, digs, numstr));
+
+    #if DISABLED(HAS_GRAPHICAL_TFT)
+      extern const char NUL_STR[];
+      SUBMENU_P(NUL_STR, []{ _goto_manual_move(float(SHORT_MANUAL_Z_MOVE)); });
+      MENU_ITEM_ADDON_START(0 + ENABLED(HAS_MARLINUI_HD44780));
+      lcd_put_u8str(tmp);
+      MENU_ITEM_ADDON_END();
+    #else
+      SUBMENU_P(tmp, []{ _goto_manual_move(float(SHORT_MANUAL_Z_MOVE)); });
+    #endif
+>>>>>>> 2.0.x
   }
   END_MENU();
 }

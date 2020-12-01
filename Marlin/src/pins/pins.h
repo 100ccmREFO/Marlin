@@ -596,10 +596,13 @@
   #include "stm32f1/pins_TRIGORILLA_PRO.h"      // STM32F1                                env:trigorilla_pro
 #elif MB(FLY_MINI)
   #include "stm32f1/pins_FLY_MINI.h"            // STM32F1                                env:FLY_MINI
+<<<<<<< HEAD
 #elif MB(FLSUN_HISPEED)
   #include "stm32f1/pins_FLSUN_HISPEED.h"       // STM32F1                                env:flsun_hispeed
 #elif MB(BEAST)
   #include "stm32f1/pins_BEAST.h"               // STM32F1                                env:STM32F103RE
+=======
+>>>>>>> 2.0.x
 
 //
 // ARM Cortex-M4F
@@ -656,7 +659,11 @@
 //
 
 #elif MB(REMRAM_V1)
+<<<<<<< HEAD
   #include "stm32f7/pins_REMRAM_V1.h"           // STM32F7                                env:REMRAM_V1
+=======
+  #include "stm32f7/pins_REMRAM_V1.h"           // STM32F7                                env:STM32F7
+>>>>>>> 2.0.x
 #elif MB(NUCLEO_F767ZI)
   #include "stm32f7/pins_NUCLEO_F767ZI.h"       // STM32F7                                env:NUCLEO_F767ZI
 #elif MB(TEENSY41)

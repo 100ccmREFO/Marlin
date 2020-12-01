@@ -76,7 +76,11 @@ public:
   static uint8_t  fastWrite();
   static uint8_t  simpleCommand(const byte simpleCommand);
   static uint8_t  getDrvPct(const uint8_t channel);
+<<<<<<< HEAD
   static void     setDrvPct(xyze_uint_t &pct);
+=======
+  static void     setDrvPct(xyze_uint8_t &pct);
+>>>>>>> 2.0.x
 };
 
 extern MCP4728 mcp4728;

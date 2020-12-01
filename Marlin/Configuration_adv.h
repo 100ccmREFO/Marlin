@@ -30,7 +30,11 @@
  *
  * Basic settings can be found in Configuration.h
  */
+<<<<<<< HEAD
 #define CONFIGURATION_ADV_H_VERSION 020008
+=======
+#define CONFIGURATION_ADV_H_VERSION 020007
+>>>>>>> 2.0.x
 
 //===========================================================================
 //============================= Thermal Settings ============================
@@ -812,10 +816,14 @@
 
   #define RESTORE_LEVELING_AFTER_G35    // Enable to restore leveling setup after operation
   //#define REPORT_TRAMMING_MM          // Report Z deviation (mm) for each point relative to the first
+<<<<<<< HEAD
 
   //#define ASSISTED_TRAMMING_MENU_ITEM // Add a menu item to run G35 Assisted Tramming (MarlinUI)
   //#define ASSISTED_TRAMMING_WIZARD    // Make the menu item open a Tramming Wizard sub-menu
   //#define ASSISTED_TRAMMING_WAIT_POSITION { X_CENTER, Y_CENTER, 30 } // Move the nozzle out of the way for adjustment
+=======
+  //#define ASSISTED_TRAMMING_MENU_ITEM // Add a menu item for Assisted Tramming
+>>>>>>> 2.0.x
 
   /**
    * Screw thread:
@@ -1082,6 +1090,7 @@
   #if HAS_BED_PROBE
     //#define PROBE_OFFSET_WIZARD
     #if ENABLED(PROBE_OFFSET_WIZARD)
+<<<<<<< HEAD
       //
       // Enable to init the Probe Z-Offset when starting the Wizard.
       // Use the estimated nozzle-to-probe Z offset, plus a little more.
@@ -1090,6 +1099,9 @@
 
       // Set a convenient position to do the calibration (probing point and nozzle/bed-distance)
       //#define PROBE_OFFSET_WIZARD_XY_POS { X_CENTER, Y_CENTER }
+=======
+      #define PROBE_OFFSET_START -4.0   // Estimated nozzle-to-probe Z offset, plus a little extra
+>>>>>>> 2.0.x
     #endif
   #endif
 
@@ -3457,7 +3469,11 @@
   #define GANTRY_CALIBRATION_FEEDRATE         500     // Feedrate for correction move
   //#define GANTRY_CALIBRATION_TO_MIN                 // Enable to calibrate Z in the MIN direction
 
+<<<<<<< HEAD
   //#define GANTRY_CALIBRATION_SAFE_POSITION XY_CENTER // Safe position for nozzle
+=======
+  //#define GANTRY_CALIBRATION_SAFE_POSITION  { X_CENTER, Y_CENTER } // Safe position for nozzle
+>>>>>>> 2.0.x
   //#define GANTRY_CALIBRATION_XY_PARK_FEEDRATE 3000  // XY Park Feedrate - MMM
   //#define GANTRY_CALIBRATION_COMMANDS_PRE   ""
   #define GANTRY_CALIBRATION_COMMANDS_POST  "G28"     // G28 highly recommended to ensure an accurate position

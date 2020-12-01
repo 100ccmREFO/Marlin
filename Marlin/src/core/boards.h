@@ -307,6 +307,7 @@
 #define BOARD_MKS_ROBIN_LITE          4015  // MKS Robin Lite/Lite2 (STM32F103RCT6)
 #define BOARD_MKS_ROBIN_LITE3         4016  // MKS Robin Lite3 (STM32F103RCT6)
 #define BOARD_MKS_ROBIN_PRO           4017  // MKS Robin Pro (STM32F103ZET6)
+<<<<<<< HEAD
 #define BOARD_MKS_ROBIN_E3            4018  // MKS Robin E3 (STM32F103RCT6)
 #define BOARD_MKS_ROBIN_E3_V1_1       4019  // MKS Robin E3 V1.1 (STM32F103RCT6)
 #define BOARD_MKS_ROBIN_E3D           4020  // MKS Robin E3D (STM32F103RCT6)
@@ -332,6 +333,28 @@
 #define BOARD_FLY_MINI                4040  // FLY MINI (STM32F103RCT6)
 #define BOARD_FLSUN_HISPEED           4041  // FLSUN HiSpeedV1 (STM32F103VET6)
 #define BOARD_BEAST                   4042  // STM32F103RET6 Libmaple-based controller
+=======
+#define BOARD_MKS_ROBIN_E3            4018  // MKS Robin E3  (STM32F103RCT6)
+#define BOARD_MKS_ROBIN_E3D           4019  // MKS Robin E3D (STM32F103RCT6)
+#define BOARD_MKS_ROBIN_E3P           4020  // MKS Robin E3p (STM32F103VET6)
+#define BOARD_BTT_SKR_MINI_V1_1       4021  // BigTreeTech SKR Mini v1.1 (STM32F103RC)
+#define BOARD_BTT_SKR_MINI_E3_V1_0    4022  // BigTreeTech SKR Mini E3 (STM32F103RC)
+#define BOARD_BTT_SKR_MINI_E3_V1_2    4023  // BigTreeTech SKR Mini E3 V1.2 (STM32F103RC)
+#define BOARD_BTT_SKR_MINI_E3_V2_0    4024  // BigTreeTech SKR Mini E3 V2.0 (STM32F103RC)
+#define BOARD_BTT_SKR_E3_DIP          4025  // BigTreeTech SKR E3 DIP V1.0 (STM32F103RC / STM32F103RE)
+#define BOARD_JGAURORA_A5S_A1         4026  // JGAurora A5S A1 (STM32F103ZET6)
+#define BOARD_FYSETC_AIO_II           4027  // FYSETC AIO_II
+#define BOARD_FYSETC_CHEETAH          4028  // FYSETC Cheetah
+#define BOARD_FYSETC_CHEETAH_V12      4029  // FYSETC Cheetah V1.2
+#define BOARD_LONGER3D_LK             4030  // Alfawise U20/U20+/U30 (Longer3D LK1/2) / STM32F103VET6
+#define BOARD_CCROBOT_MEEB_3DP        4031  // ccrobot-online.com MEEB_3DP (STM32F103RC)
+#define BOARD_CHITU3D_V5              4032  // Chitu3D TronXY X5SA V5 Board
+#define BOARD_CHITU3D_V6              4033  // Chitu3D TronXY X5SA V5 Board
+#define BOARD_CREALITY_V4             4034  // Creality v4.x (STM32F103RE)
+#define BOARD_CREALITY_V427           4035  // Creality v4.2.7 (STM32F103RE)
+#define BOARD_TRIGORILLA_PRO          4036  // Trigorilla Pro (STM32F103ZET6)
+#define BOARD_FLY_MINI                4037  // FLY MINI (STM32F103RCT6)
+>>>>>>> 2.0.x
 
 //
 // ARM Cortex-M4F
@@ -368,10 +391,18 @@
 // ARM Cortex M7
 //
 
+<<<<<<< HEAD
 #define BOARD_REMRAM_V1               5000  // RemRam v1
 #define BOARD_TEENSY41                5001  // Teensy 4.1
 #define BOARD_T41U5XBB                5002  // T41U5XBB Teensy 4.1 breakout board
 #define BOARD_NUCLEO_F767ZI           5003  // ST NUCLEO-F767ZI Dev Board
+=======
+#define BOARD_THE_BORG                5000  // THE-BORG (Power outputs: Hotend0, Hotend1, Bed, Fan)
+#define BOARD_REMRAM_V1               5001  // RemRam v1
+#define BOARD_TEENSY41                5002  // Teensy 4.1
+#define BOARD_T41U5XBB                5003  // T41U5XBB Teensy 4.1 breakout board
+#define BOARD_NUCLEO_F767ZI           5004  // ST NUCLEO-F767ZI Dev Board
+>>>>>>> 2.0.x
 
 //
 // Espressif ESP32 WiFi

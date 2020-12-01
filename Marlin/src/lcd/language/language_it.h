@@ -662,5 +662,8 @@ namespace Language_it {
   PROGMEM Language_Str MSG_REHEATING                       = _UxGT("Riscaldando...");
 
   PROGMEM Language_Str MSG_PROBE_WIZARD                    = _UxGT("Proc.guid.sonda Z");
+<<<<<<< HEAD
   PROGMEM Language_Str MSG_SOUND                           = _UxGT("Suono");
+=======
+>>>>>>> 2.0.x
 }

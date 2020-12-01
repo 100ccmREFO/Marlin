@@ -128,6 +128,7 @@
 #if HAS_SERVOS
   #include "./servo.h"
 #endif
+<<<<<<< HEAD
 
 #if ANY(HEATER_0_USES_THERMISTOR, HEATER_1_USES_THERMISTOR, HEATER_2_USES_THERMISTOR, HEATER_3_USES_THERMISTOR, \
         HEATER_4_USES_THERMISTOR, HEATER_5_USES_THERMISTOR, HEATER_6_USES_THERMISTOR, HEATER_7_USES_THERMISTOR )
@@ -135,6 +136,9 @@
 #endif
 
 #if HAS_HOTEND_THERMISTOR
+=======
+#if HOTEND_USES_THERMISTOR
+>>>>>>> 2.0.x
   #if ENABLED(TEMP_SENSOR_1_AS_REDUNDANT)
     static const temp_entry_t* heater_ttbl_map[2] = { HEATER_0_TEMPTABLE, HEATER_1_TEMPTABLE };
     static constexpr uint8_t heater_ttbllen_map[2] = { HEATER_0_TEMPTABLE_LEN, HEATER_1_TEMPTABLE_LEN };
@@ -1253,9 +1257,15 @@ void Temperature::manage_heater() {
           #ifndef MIN_COOLING_SLOPE_DEG_CHAMBER_VENT
             #define MIN_COOLING_SLOPE_DEG_CHAMBER_VENT 1.5
           #endif
+<<<<<<< HEAD
           if (!flag_chamber_excess_heat && temp_chamber.celsius - temp_chamber.target >= HIGH_EXCESS_HEAT_LIMIT) {
             // Open vent after MIN_COOLING_SLOPE_TIME_CHAMBER_VENT seconds if the
             // temperature didn't drop at least MIN_COOLING_SLOPE_DEG_CHAMBER_VENT
+=======
+          if( (temp_chamber.celsius - temp_chamber.target >= HIGH_EXCESS_HEAT_LIMIT) && !flag_chamber_excess_heat) {
+          // open vent after MIN_COOLING_SLOPE_TIME_CHAMBER_VENT seconds
+          // if the temperature did not drop at least MIN_COOLING_SLOPE_DEG_CHAMBER_VENT
+>>>>>>> 2.0.x
             if (next_cool_check_ms_2 == 0 || ELAPSED(ms, next_cool_check_ms_2)) {
               if (old_temp - temp_chamber.celsius < float(MIN_COOLING_SLOPE_DEG_CHAMBER_VENT)) flag_chamber_excess_heat = true; //the bed is heating the chamber too much
               next_cool_check_ms_2 = ms + 1000UL * MIN_COOLING_SLOPE_TIME_CHAMBER_VENT;
@@ -1484,9 +1494,21 @@ void Temperature::manage_heater() {
       case 0:
         #if HEATER_0_USER_THERMISTOR
           return user_thermistor_to_deg_c(CTI_HOTEND_0, raw);
+<<<<<<< HEAD
         #elif HEATER_0_USES_MAX6675
           return TERN(MAX6675_0_IS_MAX31865, max31865_0.temperature(MAX31865_SENSOR_OHMS_0, MAX31865_CALIBRATION_OHMS_0), raw * 0.25);
         #elif HEATER_0_USES_AD595
+=======
+        #elif ENABLED(HEATER_0_USES_MAX6675)
+          return (
+            #if ENABLED(MAX6675_IS_MAX31865)
+              max31865.temperature(MAX31865_SENSOR_OHMS, MAX31865_CALIBRATION_OHMS)
+            #else
+              raw * 0.25
+            #endif
+          );
+        #elif ENABLED(HEATER_0_USES_AD595)
+>>>>>>> 2.0.x
           return TEMP_AD595(raw);
         #elif HEATER_0_USES_AD8495
           return TEMP_AD8495(raw);
@@ -2246,9 +2268,14 @@ void Temperature::disable_all_heaters() {
     if (PENDING(ms, next_max6675_ms[hindex])) return int(MAX6675_TEMP(hindex));
     next_max6675_ms[hindex] = ms + MAX6675_HEAT_INTERVAL;
 
+<<<<<<< HEAD
     #if HAS_MAX31865
       Adafruit_MAX31865 &maxref = MAX6675_SEL(max31865_0, max31865_1);
       const uint16_t max31865_ohms = (uint32_t(maxref.readRTD()) * MAX6675_SEL(MAX31865_CALIBRATION_OHMS_0, MAX31865_CALIBRATION_OHMS_1)) >> 16;
+=======
+    #if ENABLED(MAX6675_IS_MAX31865)
+      max6675_temp = int(max31865.temperature(MAX31865_SENSOR_OHMS, MAX31865_CALIBRATION_OHMS));
+>>>>>>> 2.0.x
     #endif
 
     //

@@ -73,6 +73,10 @@ namespace Language_en {
   PROGMEM Language_Str MSG_AUTO_HOME_Y                     = _UxGT("Home Y");
   PROGMEM Language_Str MSG_AUTO_HOME_Z                     = _UxGT("Home Z");
   PROGMEM Language_Str MSG_AUTO_Z_ALIGN                    = _UxGT("Auto Z-Align");
+<<<<<<< HEAD
+=======
+  PROGMEM Language_Str MSG_ASSISTED_TRAMMING               = _UxGT("Assisted Tramming");
+>>>>>>> 2.0.x
   PROGMEM Language_Str MSG_ITERATION                       = _UxGT("G34 Iteration: %i");
   PROGMEM Language_Str MSG_DECREASING_ACCURACY             = _UxGT("Accuracy Decreasing!");
   PROGMEM Language_Str MSG_ACCURACY_ACHIEVED               = _UxGT("Accuracy Achieved");
@@ -676,6 +680,7 @@ namespace Language_en {
   PROGMEM Language_Str MSG_REHEATING                       = _UxGT("Reheating...");
 
   PROGMEM Language_Str MSG_PROBE_WIZARD                    = _UxGT("Z Probe Wizard");
+<<<<<<< HEAD
   PROGMEM Language_Str MSG_PROBE_WIZARD_PROBING            = _UxGT("Probing Z Reference");
   PROGMEM Language_Str MSG_PROBE_WIZARD_MOVING             = _UxGT("Moving to Probing Pos");
 
@@ -689,6 +694,8 @@ namespace Language_en {
     PROGMEM Language_Str MSG_CALIBRATION_COMPLETED         = _UxGT("Calibration Completed");
     PROGMEM Language_Str MSG_CALIBRATION_FAILED            = _UxGT("Calibration Failed");
   #endif
+=======
+>>>>>>> 2.0.x
 }
 
 #if FAN_COUNT == 1
