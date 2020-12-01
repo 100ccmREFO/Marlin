@@ -86,11 +86,7 @@ class TFT_String {
     static void set();
     static void add(uint8_t character) { add_character(character); eol(); }
     static void add(uint8_t *string);
-<<<<<<< HEAD
     static void add(uint8_t *string, int8_t index, uint8_t *itemString=nullptr);
-=======
-    static void add(uint8_t *string, int8_t index, uint8_t *itemString = NULL);
->>>>>>> 2.0.x
     static void set(uint8_t *string) { set(); add(string); };
     static void set(uint8_t *string, int8_t index, const char *itemString=nullptr) { set(); add(string, index, (uint8_t *)itemString); };
     static inline void set(const char *string) { set((uint8_t *)string); }

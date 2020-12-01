@@ -30,8 +30,4 @@ public:
   static void set_current(const uint8_t channel, const float current);
 };
 
-<<<<<<< HEAD
 extern DigipotI2C digipot_i2c;
-=======
-DigipotI2C digipot_i2c;
->>>>>>> 2.0.x

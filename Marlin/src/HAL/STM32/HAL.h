@@ -188,7 +188,6 @@ void flashFirmware(const int16_t);
 typedef void (*systickCallback_t)(void);
 void systick_attach_callback(systickCallback_t cb);
 void HAL_SYSTICK_Callback();
-<<<<<<< HEAD
 extern volatile uint32_t systick_uptime_millis;
 
 #define HAL_CAN_SET_PWM_FREQ   // This HAL supports PWM Frequency adjustment
@@ -207,5 +206,3 @@ void set_pwm_frequency(const pin_t pin, int f_desired);
  *  Optionally allows changing the maximum size of the provided value to enable finer PWM duty control [default = 255]
  */
 void set_pwm_duty(const pin_t pin, const uint16_t v, const uint16_t v_size=255, const bool invert=false);
-=======
->>>>>>> 2.0.x

@@ -3559,11 +3559,7 @@ void EachMomentUpdate() {
   else if (dwin_abort_flag && !HMI_flag.home_flag) { // Print Stop
     dwin_abort_flag = false;
     HMI_ValueStruct.print_speed = feedrate_percentage = 100;
-<<<<<<< HEAD
     dwin_zoffset = BABY_Z_VAR;
-=======
-    dwin_zoffset = TERN0(HAS_BED_PROBE, probe.offset.z);
->>>>>>> 2.0.x
     select_page.set(0);
     Goto_MainMenu();
   }

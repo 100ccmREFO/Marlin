@@ -33,11 +33,7 @@
 // Determine NUM_SERVOS if none was supplied
 #ifndef NUM_SERVOS
   #define NUM_SERVOS 0
-<<<<<<< HEAD
   #if ANY(HAS_Z_SERVO_PROBE, CHAMBER_VENT, SWITCHING_TOOLHEAD, SWITCHING_EXTRUDER, SWITCHING_NOZZLE, SPINDLE_SERVO)
-=======
-  #if ANY(CHAMBER_VENT, HAS_Z_SERVO_PROBE, SWITCHING_EXTRUDER, SWITCHING_NOZZLE)
->>>>>>> 2.0.x
     #if NUM_SERVOS <= Z_PROBE_SERVO_NR
       #undef NUM_SERVOS
       #define NUM_SERVOS (Z_PROBE_SERVO_NR + 1)
@@ -66,13 +62,10 @@
       #undef NUM_SERVOS
       #define NUM_SERVOS (SWITCHING_EXTRUDER_E23_SERVO_NR + 1)
     #endif
-<<<<<<< HEAD
     #if NUM_SERVOS <= SPINDLE_SERVO_NR
       #undef NUM_SERVOS
       #define NUM_SERVOS (SPINDLE_SERVO_NR + 1)
     #endif
-=======
->>>>>>> 2.0.x
   #endif
 #endif
 
@@ -191,7 +184,6 @@
 
 #if EITHER(DIGIPOT_MCP4018, DIGIPOT_MCP4451)
   #define HAS_MOTOR_CURRENT_I2C 1
-<<<<<<< HEAD
 #endif
 
 #if ENABLED(Z_STEPPER_AUTO_ALIGN)
@@ -201,8 +193,6 @@
   #ifndef Z_STEPPER_ALIGN_AMP
     #define Z_STEPPER_ALIGN_AMP 1.0
   #endif
-=======
->>>>>>> 2.0.x
 #endif
 
 // Multiple Z steppers
@@ -245,10 +235,7 @@
   #define NEEDS_HARDWARE_PWM 1
 #endif
 
-#if defined(__AVR__) && defined(USBCON)
-  #define IS_AT90USB 1
-  #undef SERIAL_XON_XOFF // Not supported on USB-native devices
-#else
+#if !defined(__AVR__) || !defined(USBCON)
   // Define constants and variables for buffering serial data.
   // Use only 0 or powers of 2 greater than 1
   // : [0, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, ...]
@@ -260,6 +247,9 @@
   #ifndef TX_BUFFER_SIZE
     #define TX_BUFFER_SIZE 32
   #endif
+#else
+  // SERIAL_XON_XOFF not supported on USB-native devices
+  #undef SERIAL_XON_XOFF
 #endif
 
 #if ENABLED(HOST_ACTION_COMMANDS)

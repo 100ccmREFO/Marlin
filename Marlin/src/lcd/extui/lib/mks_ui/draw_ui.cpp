@@ -775,11 +775,7 @@ char *creat_title_text() {
         card.openFileRead(cur_name);
 
         card.setIndex((PREVIEW_LITTLE_PIC_SIZE + To_pre_view) + size * row + 8);
-<<<<<<< HEAD
         #if HAS_TFT_LVGL_UI_SPI
-=======
-        #if ENABLED(TFT_LVGL_UI_SPI)
->>>>>>> 2.0.x
           SPI_TFT.setWindow(xpos_pixel, ypos_pixel + row, 200, 1);
         #else
           LCD_setWindowArea(xpos_pixel, ypos_pixel + row, 200, 1);

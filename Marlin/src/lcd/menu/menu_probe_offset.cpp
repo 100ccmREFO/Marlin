@@ -16,11 +16,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
-<<<<<<< HEAD
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-=======
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
->>>>>>> 2.0.x
  *
  */
 
@@ -32,20 +28,9 @@
 
 #if ENABLED(PROBE_OFFSET_WIZARD)
 
-<<<<<<< HEAD
 #include "menu_item.h"
 #include "menu_addon.h"
 #include "../../gcode/queue.h"
-=======
-#ifndef PROBE_OFFSET_START
-  #error "PROBE_OFFSET_WIZARD requires a PROBE_OFFSET_START with a negative value."
-#else
-  static_assert(PROBE_OFFSET_START < 0, "PROBE_OFFSET_START must be < 0. Please update your configuration.");
-#endif
-
-#include "menu_item.h"
-#include "menu_addon.h"
->>>>>>> 2.0.x
 #include "../../module/motion.h"
 #include "../../module/planner.h"
 #include "../../module/probe.h"
@@ -55,7 +40,6 @@
 #endif
 
 // Global storage
-<<<<<<< HEAD
 float z_offset_backup, calculated_z_offset, z_offset_ref;
 
 TERN_(HAS_LEVELING, bool leveling_was_active);
@@ -70,23 +54,6 @@ inline void z_clearance_move() {
       10
     #endif
   );
-=======
-float z_offset_backup, calculated_z_offset;
-
-TERN_(HAS_LEVELING, bool leveling_was_active);
-
-void prepare_for_calibration() {
-  z_offset_backup = probe.offset.z;
-
-  // Disable soft endstops for free Z movement
-  SET_SOFT_ENDSTOP_LOOSE(true);
-
-  // Disable leveling for raw planner motion
-  #if HAS_LEVELING
-    leveling_was_active = planner.leveling_active;
-    set_bed_leveling_enabled(false);
-  #endif
->>>>>>> 2.0.x
 }
 
 void set_offset_and_go_back(const float &z) {
@@ -103,11 +70,7 @@ void _goto_manual_move_z(const float scale) {
 
 void probe_offset_wizard_menu() {
   START_MENU();
-<<<<<<< HEAD
   calculated_z_offset = probe.offset.z + current_position.z - z_offset_ref;
-=======
-  calculated_z_offset = probe.offset.z + current_position.z;
->>>>>>> 2.0.x
 
   if (LCD_HEIGHT >= 4)
     STATIC_ITEM(MSG_MOVE_NOZZLE_TO_BED, SS_CENTER|SS_INVERT);
@@ -119,7 +82,6 @@ void probe_offset_wizard_menu() {
   SUBMENU(MSG_MOVE_01MM, []{ _goto_manual_move_z( 0.1f); });
 
   if ((SHORT_MANUAL_Z_MOVE) > 0.0f && (SHORT_MANUAL_Z_MOVE) < 0.1f) {
-<<<<<<< HEAD
     char tmp[20], numstr[10];
     // Determine digits needed right of decimal
     const uint8_t digs = !UNEAR_ZERO((SHORT_MANUAL_Z_MOVE) * 1000 - int((SHORT_MANUAL_Z_MOVE) * 1000)) ? 4 :
@@ -134,38 +96,17 @@ void probe_offset_wizard_menu() {
     #else
       SUBMENU_P(tmp, []{ _goto_manual_move_z(float(SHORT_MANUAL_Z_MOVE)); });
     #endif
-=======
-    extern const char NUL_STR[];
-    SUBMENU_P(NUL_STR, []{ _goto_manual_move_z(float(SHORT_MANUAL_Z_MOVE)); });
-    MENU_ITEM_ADDON_START(0 + ENABLED(HAS_MARLINUI_HD44780));
-      char tmp[20], numstr[10];
-      // Determine digits needed right of decimal
-      const uint8_t digs = !UNEAR_ZERO((SHORT_MANUAL_Z_MOVE) * 1000 - int((SHORT_MANUAL_Z_MOVE) * 1000)) ? 4 :
-                           !UNEAR_ZERO((SHORT_MANUAL_Z_MOVE) *  100 - int((SHORT_MANUAL_Z_MOVE) *  100)) ? 3 : 2;
-      sprintf_P(tmp, GET_TEXT(MSG_MOVE_Z_DIST), dtostrf(SHORT_MANUAL_Z_MOVE, 1, digs, numstr));
-      lcd_put_u8str(tmp);
-    MENU_ITEM_ADDON_END();
->>>>>>> 2.0.x
   }
 
   ACTION_ITEM(MSG_BUTTON_DONE, []{
     set_offset_and_go_back(calculated_z_offset);
-<<<<<<< HEAD
     current_position.z = z_offset_ref;  // Set Z to z_offset_ref, as we can expect it is at probe height
     sync_plan_position();
     z_clearance_move();                 // Raise Z as if it was homed
-=======
-    do_z_clearance(20.0
-      #ifdef Z_AFTER_HOMING
-        - 20.0 + Z_AFTER_HOMING
-      #endif
-    );
->>>>>>> 2.0.x
   });
 
   ACTION_ITEM(MSG_BUTTON_CANCEL, []{
     set_offset_and_go_back(z_offset_backup);
-<<<<<<< HEAD
     // If wizard-homing was done by probe with with PROBE_OFFSET_WIZARD_START_Z
     #if EITHER(Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN, USE_PROBE_FOR_Z_HOMING) && defined(PROBE_OFFSET_WIZARD_START_Z)
       set_axis_never_homed(Z_AXIS); // On cancel the Z position needs correction
@@ -173,14 +114,11 @@ void probe_offset_wizard_menu() {
     #else // Otherwise do a Z clearance move like after Homing
       z_clearance_move();
     #endif
-=======
->>>>>>> 2.0.x
   });
 
   END_MENU();
 }
 
-<<<<<<< HEAD
 void prepare_for_probe_offset_wizard() {
   if (ui.wait_for_move) return;
 
@@ -230,22 +168,11 @@ void goto_probe_offset_wizard() {
   #endif
 
   // Home all axes
-=======
-void goto_probe_offset_wizard() {
-  ui.defer_status_screen();
-
-  prepare_for_calibration();
-
-  probe.offset.z = PROBE_OFFSET_START;
-
-  set_all_unhomed();
->>>>>>> 2.0.x
   queue.inject_P(G28_STR);
 
   ui.goto_screen([]{
     _lcd_draw_homing();
     if (all_axes_homed()) {
-<<<<<<< HEAD
       SET_SOFT_ENDSTOP_LOOSE(true); // Disable soft endstops for free Z movement
       z_offset_ref = 0;             // Set Z Value for Wizard Position to 0
       ui.goto_screen(prepare_for_probe_offset_wizard);
@@ -253,12 +180,6 @@ void goto_probe_offset_wizard() {
     }
   });
 
-=======
-      ui.goto_screen(probe_offset_wizard_menu);
-      ui.defer_status_screen();
-    }
-  });
->>>>>>> 2.0.x
 }
 
 #endif // PROBE_OFFSET_WIZARD

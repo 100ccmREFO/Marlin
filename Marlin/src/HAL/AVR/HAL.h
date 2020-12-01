@@ -25,7 +25,7 @@
 #include "watchdog.h"
 #include "math.h"
 
-#ifdef IS_AT90USB
+#ifdef USBCON
   #include <HardwareSerial.h>
 #else
   #define HardwareSerial_h // Hack to prevent HardwareSerial.h header inclusion
@@ -81,7 +81,7 @@ typedef int8_t pin_t;
 //extern uint8_t MCUSR;
 
 // Serial ports
-#ifdef IS_AT90USB
+#ifdef USBCON
   #define MYSERIAL0 TERN(BLUETOOTH, bluetoothSerial, Serial)
 #else
   #if !WITHIN(SERIAL_PORT, -1, 3)
@@ -122,7 +122,6 @@ inline uint8_t HAL_get_reset_source() { return MCUSR; }
 
 inline void HAL_reboot() {}  // reboot the board or restart the bootloader
 
-<<<<<<< HEAD
 #if GCC_VERSION <= 50000
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wunused-function"
@@ -133,14 +132,6 @@ extern "C" int freeMemory();
 #if GCC_VERSION <= 50000
   #pragma GCC diagnostic pop
 #endif
-=======
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-function"
-extern "C" {
-  int freeMemory();
-}
-#pragma GCC diagnostic pop
->>>>>>> 2.0.x
 
 // ADC
 #ifdef DIDR2

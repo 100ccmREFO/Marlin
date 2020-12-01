@@ -2503,14 +2503,10 @@
 /**
  * Buzzer/Speaker
  */
-<<<<<<< HEAD
 #if PIN_EXISTS(BEEPER)
   #define USE_BEEPER 1
 #endif
 #if USE_BEEPER || ANY(LCD_USE_I2C_BUZZER, PCA9632_BUZZER)
-=======
-#if PIN_EXISTS(BEEPER) || ANY(LCD_USE_I2C_BUZZER, PCA9632_BUZZER)
->>>>>>> 2.0.x
   #define HAS_BUZZER 1
 #endif
 

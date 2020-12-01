@@ -336,15 +336,9 @@ void MMU2::mmu_loop() {
       #endif
 
       if (rx_ok()) {
-<<<<<<< HEAD:Marlin/src/feature/mmu/mmu2.cpp
         // Response to C0 mmu command in MMU2S model
         bool can_reset = true;
         #if HAS_PRUSA_MMU2S
-=======
-        // Response to C0 mmu command in PRUSA_MMU2_S_MODE
-        bool can_reset = true;
-        #if ENABLED(PRUSA_MMU2_S_MODE)
->>>>>>> 2.0.x:Marlin/src/feature/mmu2/mmu2.cpp
           if (!mmu2s_triggered && last_cmd == MMU_CMD_C0) {
             can_reset = false;
             // MMU ok received but filament sensor not triggered, retrying...

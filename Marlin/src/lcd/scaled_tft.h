@@ -51,10 +51,5 @@
 #endif
 
 #ifndef TFT_PIXEL_OFFSET_Y
-<<<<<<< HEAD
   #define TFT_PIXEL_OFFSET_Y 32 // 32 is best for both 320x240 and 480x320
-=======
-  // 32 is better for both 320x240 and 480x320
-  #define TFT_PIXEL_OFFSET_Y 32
->>>>>>> 2.0.x
 #endif
