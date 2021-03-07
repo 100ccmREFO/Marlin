@@ -1048,7 +1048,7 @@
 #define Z_PROBE_FEEDRATE_FAST (20*60)
 
 // Feedrate (mm/min) for the "accurate" probe of each point
-#define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST/ (5/2))
+#define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST/ 4)
 
 /**
  * Probe Activation Switch
